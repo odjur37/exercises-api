@@ -22,29 +22,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-23T17:16:09.741+01:00[Europe/Stockholm]")
-
 @Validated
-@Api(value = "SqlUsers", description = "the SqlUser API")
 public interface UserApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "addSqlUser", notes = "add a new SqlUser to the application", response = SqlUser.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "123", response = SqlUser.class) })
     @RequestMapping(value = "/participants",
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<SqlUser> addUser(@ApiParam(value = ""  )  @Valid @RequestBody SqlUser sqlUser) {
+    default ResponseEntity<SqlUser> addUser( @Valid @RequestBody SqlUser sqlUser) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -59,9 +48,6 @@ public interface UserApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getSqlUsers", notes = "Returns all SqlUsers and their data", response = SqlUser.class, responseContainer = "List", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = SqlUser.class, responseContainer = "List") })
     @RequestMapping(value = "/participants",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -79,14 +65,10 @@ public interface UserApi {
 
     }
 
-
-    @ApiOperation(value = "", nickname = "updateSqlUser", notes = "Updates an existing SqlUser", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "SqlUser updated successfully!") })
     @RequestMapping(value = "/participants",
         consumes = { "application/x-www-form-urlencoded" },
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateUser(@ApiParam(value = "") @RequestParam(value="id", required=false)  UUID id) {
+    default ResponseEntity<Void> updateUser(@RequestParam(value="id", required=false)  UUID id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -9,8 +9,6 @@ import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.swagger.annotations.ApiModelProperty;
-
 @Entity
 public class SqlUser {
 	@JsonProperty("id")
@@ -35,13 +33,6 @@ public class SqlUser {
 		return this;
 	}
 
-	/**
-	 * Get id
-	 * 
-	 * @return id
-	 */
-	@ApiModelProperty(value = "")
-	
 	@Valid
 	public UUID getId() {
 		return id;
@@ -56,13 +47,6 @@ public class SqlUser {
 		return this;
 	}
 
-	/**
-	 * Get exercises
-	 * 
-	 * @return exercises
-	 */
-	@ApiModelProperty(value = "")
-
 	public Integer getExercises() {
 		return exercises;
 	}
@@ -75,13 +59,6 @@ public class SqlUser {
 		this.name = name;
 		return this;
 	}
-
-	/**
-	 * Get name
-	 * 
-	 * @return name
-	 */
-	@ApiModelProperty(value = "")
 
 	public String getName() {
 		return name;
