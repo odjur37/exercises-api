@@ -7,11 +7,11 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.openapitools.model.SqlUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.triplewill.exerciseapp.repositories.SqlRepo;
+import com.triplewill.model.SqlUser;
 
 @Service
 public class UserService {
@@ -21,7 +21,7 @@ public class UserService {
 	
 	public SqlUser addUser(SqlUser user) {
 		if (user.getId() == null) {
-			user.setId(UUID.randomUUID());
+			user.setId(UUID.randomUUID().toString());
 		}
 		return this.repo.save(user);
 	}

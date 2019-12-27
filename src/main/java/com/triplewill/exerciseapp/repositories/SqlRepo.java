@@ -2,11 +2,12 @@ package com.triplewill.exerciseapp.repositories;
 
 import java.util.UUID;
 
-import org.openapitools.model.SqlUser;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.triplewill.model.SqlUser;
+
 @Repository
-public interface SqlRepo extends CrudRepository<SqlUser, UUID>{
+public interface SqlRepo extends JpaRepository<SqlUser, UUID>{
 	
 }

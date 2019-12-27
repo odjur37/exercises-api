@@ -1,19 +1,20 @@
-package org.openapitools.model;
+package com.triplewill.model;
 
 import java.util.Objects;
-import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
+@Table(name = "users")
 public class SqlUser {
 	@JsonProperty("id")
 	@Id
-	private UUID id;
+	private String id;
 	
 	@JsonProperty("exercises")
 	private Integer exercises;
@@ -21,12 +22,12 @@ public class SqlUser {
 	@JsonProperty("name")
 	private String name;
 
-	public SqlUser id(UUID id) {
+	public SqlUser id(String id) {
 		this.id = id;
 		return this;
 	}
 
-	public SqlUser id(UUID id, Integer exercises, String name) {
+	public SqlUser id(String id, Integer exercises, String name) {
 		this.id = id;
 		this.exercises = exercises;
 		this.name = name;
@@ -34,11 +35,11 @@ public class SqlUser {
 	}
 
 	@Valid
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.openapitools.api.UserApi;
-import org.openapitools.model.SqlUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +12,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.triplewill.exerciseapp.services.UserService;
+import com.triplewill.model.SqlUser;
 
-@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 @RestController
 public class UserController implements UserApi{
 	
