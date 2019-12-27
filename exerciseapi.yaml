@@ -1,0 +1,71 @@
+openapi: "3.0.2"
+info:
+  description: "This API is for use with the exercise competition tracker app"
+  version: "1.0.0"
+  title: "ExerciseAPI"
+  termsOfService: "http://triplewill.com"
+  contact:
+    email: "erikw.englund@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+paths:
+  /participants:
+    post:
+      description: 'add a new participant to the application'
+      operationId: addParticipant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Participant'
+      responses:
+        201:
+          description: '123'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Participant'
+    get:
+      description: 'Returns all participants and their data'
+      operationId: getParticipants
+      responses:
+        200:
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Participant'
+    put:
+      description: 'Returns all participants and their data'
+      operationId: updateParticipan
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+      responses:
+        204:
+          description: 'Participant updated successfully!'
+              
+                  
+components:
+  schemas:
+    Participant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        exercises:
+          type: integer
+        name:
+          type: string
+          
