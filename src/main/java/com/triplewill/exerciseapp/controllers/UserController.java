@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.triplewill.exerciseapp.services.UserService;
 import com.triplewill.model.User;
 
-@CrossOrigin(origins = "${allow.origin.host}", maxAge = 3600)
 @RestController
 public class UserController implements UserApi{
 	
