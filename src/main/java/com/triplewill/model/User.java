@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "users")
 public class User {
-	@JsonProperty("id")
+	@JsonProperty("userId")
 	@Id
 	private String id;
 	
 	@JsonProperty("exercises")
 	private Integer exercises;
 	
-	@JsonProperty("name")
+	@JsonProperty("username")
 	private String name;
 
 	public User id(String id) {
