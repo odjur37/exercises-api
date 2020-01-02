@@ -14,18 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.triplewill.exerciseapp.services.UserService;
 import com.triplewill.model.SqlUser;
 
-//@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
+@CrossOrigin(origins = "${allow.origin.host}", maxAge = 3600)
 @RestController
 public class UserController implements UserApi{
 	
 	@Autowired
 	UserService service;
-
-	@Override
-	public ResponseEntity<SqlUser> addUser(SqlUser user) {
-		SqlUser p = service.addUser(user);
-		return new ResponseEntity<SqlUser>(p, HttpStatus.CREATED);
-	}
 
 	@Override
 	public ResponseEntity<List<SqlUser>> getUsers() {

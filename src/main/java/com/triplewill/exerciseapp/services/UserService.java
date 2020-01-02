@@ -34,7 +34,7 @@ public class UserService {
 	}
 
 	public void updateUser(@Valid UUID body) {
-		Optional<SqlUser> queryResult = this.repo.findById(body);
+		Optional<SqlUser> queryResult = this.repo.findById(body.toString());
 		if (queryResult.isPresent()) {
 			SqlUser p = queryResult.get();
 			p.setExercises(p.getExercises()+1);
