@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import com.triplewill.model.SqlUser;
+import com.triplewill.model.User;
 
 @Validated
 public interface UserApi {
@@ -30,7 +30,7 @@ public interface UserApi {
     @RequestMapping(value = "/participants",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<SqlUser>> getUsers() {
+    default ResponseEntity<List<User>> getUsers() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

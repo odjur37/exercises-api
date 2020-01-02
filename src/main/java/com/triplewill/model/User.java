@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "users")
-public class SqlUser {
+public class User {
 	@JsonProperty("id")
 	@Id
 	private String id;
@@ -22,12 +22,12 @@ public class SqlUser {
 	@JsonProperty("name")
 	private String name;
 
-	public SqlUser id(String id) {
+	public User id(String id) {
 		this.id = id;
 		return this;
 	}
 
-	public SqlUser id(String id, Integer exercises, String name) {
+	public User id(String id, Integer exercises, String name) {
 		this.id = id;
 		this.exercises = exercises;
 		this.name = name;
@@ -43,7 +43,7 @@ public class SqlUser {
 		this.id = id;
 	}
 
-	public SqlUser exercises(Integer exercises) {
+	public User exercises(Integer exercises) {
 		this.exercises = exercises;
 		return this;
 	}
@@ -56,7 +56,7 @@ public class SqlUser {
 		this.exercises = exercises;
 	}
 
-	public SqlUser name(String name) {
+	public User name(String name) {
 		this.name = name;
 		return this;
 	}
@@ -77,7 +77,7 @@ public class SqlUser {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		SqlUser user = (SqlUser) o;
+		User user = (User) o;
 		return Objects.equals(this.id, user.id) && Objects.equals(this.exercises, user.exercises)
 				&& Objects.equals(this.name, user.name);
 	}
