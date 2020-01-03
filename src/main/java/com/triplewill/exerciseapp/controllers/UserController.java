@@ -18,6 +18,12 @@ public class UserController implements UserApi{
 	
 	@Autowired
 	UserService service;
+	
+	@Override
+	public ResponseEntity<User> addUser(User user){
+		User newUser = this.service.createUser(user);
+		return new ResponseEntity<User>(newUser, HttpStatus.OK);
+	}
 
 	@Override
 	public ResponseEntity<List<User>> getUsers() {

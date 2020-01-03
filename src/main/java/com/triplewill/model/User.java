@@ -3,44 +3,46 @@ package com.triplewill.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.Valid;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3956062026320724250L;
+
 	@Id
-	@Column(name="userId")
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long userId;
 	
-	@Column(name="exercises")
 	private Integer exercises;
 	
-	@Column(name="username")
-	private String name;
+	private String username;
 
-	public User id(String id) {
-		this.id = id;
+	public User id(Long id) {
+		this.userId = id;
 		return this;
 	}
 
-	public User id(String id, Integer exercises, String name) {
-		this.id = id;
+	public User id(Long id, Integer exercises, String name) {
+		this.userId = id;
 		this.exercises = exercises;
-		this.name = name;
+		this.username = name;
 		return this;
 	}
 
-	@Valid
-	public String getId() {
-		return id;
+	public Long getId() {
+		return userId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(Long id) {
+		this.userId = id;
 	}
 
 	public User exercises(Integer exercises) {
@@ -57,16 +59,16 @@ public class User implements Serializable{
 	}
 
 	public User name(String name) {
-		this.name = name;
+		this.username = name;
 		return this;
 	}
 
 	public String getName() {
-		return name;
+		return username;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.username = name;
 	}
 
 	@Override
@@ -78,13 +80,13 @@ public class User implements Serializable{
 			return false;
 		}
 		User user = (User) o;
-		return Objects.equals(this.id, user.id) && Objects.equals(this.exercises, user.exercises)
-				&& Objects.equals(this.name, user.name);
+		return Objects.equals(this.userId, user.userId) && Objects.equals(this.exercises, user.exercises)
+				&& Objects.equals(this.username, user.username);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, exercises, name);
+		return Objects.hash(userId, exercises, username);
 	}
 
 	@Override
@@ -92,9 +94,9 @@ public class User implements Serializable{
 		StringBuilder sb = new StringBuilder();
 		sb.append("class Participant {\n");
 
-		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    id: ").append(toIndentedString(userId)).append("\n");
 		sb.append("    exercises: ").append(toIndentedString(exercises)).append("\n");
-		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    name: ").append(toIndentedString(username)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

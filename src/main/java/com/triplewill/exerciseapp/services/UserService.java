@@ -15,6 +15,10 @@ public class UserService {
 	@Autowired
 	UserRepositoryImpl repo;
 	
+	public User createUser(User user) {
+		return this.repo.save(user);
+	}
+	
 	public List<User> getAllUsers(){
 		return this.repo.findAll();
 	}
