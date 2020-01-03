@@ -32,8 +32,8 @@ public class UserService {
 		return result;
 	}
 
-	public void updateUser(@Valid UUID body) {
-		List<User> queryResult = this.repo.findById(body.toString());
+	public void updateUser(String body) {
+		List<User> queryResult = this.repo.findById(body);
 		if (!queryResult.isEmpty()) {
 			User p = queryResult.get(0);
 			p.setExercises(p.getExercises()+1);

@@ -7,7 +7,6 @@ package org.openapitools.api;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -47,7 +46,7 @@ public interface UserApi {
     @RequestMapping(value = "/participants",
         consumes = { "application/x-www-form-urlencoded" },
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateUser(@RequestParam(value="id", required=false)  UUID id) {
+    default ResponseEntity<Void> updateUser(@RequestParam(value="userId", required=false)  String id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

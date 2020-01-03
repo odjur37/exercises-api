@@ -2,7 +2,6 @@ package com.triplewill.exerciseapp.controllers;
 
 
 import java.util.List;
-import java.util.UUID;
 
 import org.openapitools.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,8 @@ public class UserController implements UserApi{
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(UUID body) {
-		this.service.updateUser(body);
+	public ResponseEntity<Void> updateUser(String userId) {
+		this.service.updateUser(userId);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
