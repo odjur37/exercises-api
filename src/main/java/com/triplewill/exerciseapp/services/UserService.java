@@ -23,10 +23,14 @@ public class UserService {
 	}
 
 	public void updateUser(String body) {
+		System.err.println("Before execution: " + body);
 		List<User> queryResult = this.repo.findById(body);
 		if (!queryResult.isEmpty()) {
+			System.err.println("inside if case ----");
 			User p = queryResult.get(0);
+			System.err.println("Exercises for user: " + p.getName() + " is: " + p.getExercises());
 			p.setExercises(p.getExercises()+1);
+			System.err.println("Exercises is now: " + p.getExercises());
 			this.repo.updateUser(p);
 		}
 	}
