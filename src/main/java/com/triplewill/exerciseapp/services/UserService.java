@@ -33,6 +33,7 @@ public class UserService {
 	}
 
 	public void updateUser(String body) {
+		System.err.println("THIS IS A BODY: \n " + body + " \n");
 		List<User> queryResult = this.repo.findById(body);
 		if (!queryResult.isEmpty()) {
 			User p = queryResult.get(0);
