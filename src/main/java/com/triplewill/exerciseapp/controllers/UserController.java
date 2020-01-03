@@ -1,5 +1,6 @@
 package com.triplewill.exerciseapp.controllers;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.openapitools.api.UserApi;
@@ -22,6 +23,7 @@ public class UserController implements UserApi {
 	@Override
 	public ResponseEntity<List<User>> getUsers() {
 		List<User> myList = this.service.getAllUsers();
+		Collections.sort(myList);
 		return new ResponseEntity<List<User>>(myList, HttpStatus.OK);
 	}
 

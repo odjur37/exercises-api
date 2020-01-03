@@ -1,6 +1,5 @@
 package com.triplewill.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -11,11 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3956062026320724250L;
+public class User implements Comparable<User>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -110,6 +105,11 @@ public class User implements Serializable{
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	@Override
+	public int compareTo(User o) {
+		return this.userId.compareTo(o.getId());
 	}
 
 }
