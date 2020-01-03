@@ -7,6 +7,7 @@ import org.openapitools.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.triplewill.exerciseapp.services.UserService;
@@ -26,7 +27,7 @@ public class UserController implements UserApi{
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(String id) {
+	public ResponseEntity<Void> updateUser(@RequestParam("userId")String id) {
 		this.service.updateUser(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
