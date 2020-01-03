@@ -26,9 +26,9 @@ public class UserController implements UserApi {
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(@RequestParam("userId") String userId) {
+	public ResponseEntity<Void> updateUser(@RequestParam("userId") Long userId) {
 		try {
-			this.service.updateUser(Long.parseLong(userId));
+			this.service.updateUser(userId);
 		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
 		}
