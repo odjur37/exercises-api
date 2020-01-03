@@ -1,25 +1,25 @@
 package com.triplewill.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.Valid;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 @Table(name = "users")
-public class User {
-	@JsonProperty("userId")
+public class User implements Serializable{
 	@Id
+	@Column(name="userId")
 	private String id;
 	
-	@JsonProperty("exercises")
+	@Column(name="exercises")
 	private Integer exercises;
 	
-	@JsonProperty("username")
+	@Column(name="username")
 	private String name;
 
 	public User id(String id) {
