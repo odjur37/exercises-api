@@ -45,7 +45,7 @@ public interface UserApi {
     @RequestMapping(value = "/participants",
         consumes = { "application/x-www-form-urlencoded" },
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateUser(@RequestParam(value="userId", required=false)  String id) {
+    default ResponseEntity<Void> updateUser(@RequestParam(value="userId", required=false)  Long id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
