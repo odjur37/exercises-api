@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository{
 	
 	@Override
 	public List<User> findById(String id) {
-		return template.query("SELECT * FROM users WHERE userId="+id, new UserRowMapper());
+		return template.query("SELECT * FROM users WHERE userId='"+id+"'", new UserRowMapper());
 	}
 	
 	@Override
