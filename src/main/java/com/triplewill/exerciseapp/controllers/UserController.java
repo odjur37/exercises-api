@@ -26,8 +26,8 @@ public class UserController implements UserApi{
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(String userId) {
-		this.service.updateUser(userId);
+	public ResponseEntity<Void> updateUser(String id) {
+		this.service.updateUser(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
