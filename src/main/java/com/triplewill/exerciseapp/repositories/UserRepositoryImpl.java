@@ -34,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository{
 	@Override
 	public void updateUser(User user) {
 	 
-		final String sql = "update users set exercises=:exercises where userId=:userId";
+		final String sql = "update users set exercises=:exercises where userId=':userId'";
 	        KeyHolder holder = new GeneratedKeyHolder();
 	        SqlParameterSource param = new MapSqlParameterSource()
 	        		.addValue("userId", user.getId())

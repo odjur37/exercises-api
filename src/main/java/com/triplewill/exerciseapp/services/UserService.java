@@ -2,9 +2,6 @@ package com.triplewill.exerciseapp.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +15,6 @@ public class UserService {
 	@Autowired
 	UserRepositoryImpl repo;
 	
-//	public User addUser(User user) {
-//		if (user.getId() == null) {
-//			user.setId(UUID.randomUUID().toString());
-//		}
-//		return this.repo.save(user);
-//	}
-	
 	public List<User> getAllUsers(){
 		List<User> result = new ArrayList<User>();
 		Iterable<User> iter = this.repo.findAll();
@@ -33,7 +23,6 @@ public class UserService {
 	}
 
 	public void updateUser(String body) {
-		System.err.println("THIS IS A BODY: \n " + body + " \n");
 		List<User> queryResult = this.repo.findById(body);
 		if (!queryResult.isEmpty()) {
 			User p = queryResult.get(0);
