@@ -25,14 +25,27 @@ public class UserService {
 		return this.repo.findAll();
 	}
 
-	public void updateUser(Long userId) {
+	public void updateUser(Long userId, String action) {
 		Optional<User> queryResult=this.repo.findById(userId);
 		if (queryResult.isPresent()) {
-			User p = queryResult.get();
-			p.setExercises(p.getExercises()+1);
-			this.repo.save(p);
+			User user = queryResult.get();
+			switch (action) {
+			case "increase":
+				updatePts(user, 1);
+				break;
+			case "decrease":
+				updatePts(user, -1);
+				break;
+			default:
+				break;
+			}
+			this.repo.save(user);
 		} else {
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	private void updatePts(User user, int point) {
+		user.setExercises(user.getExercises() + point);
 	}
 }

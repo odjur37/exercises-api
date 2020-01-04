@@ -7,7 +7,6 @@ import org.openapitools.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -28,9 +27,9 @@ public class UserController implements UserApi {
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(@RequestParam("userId") Long userId) {
+	public ResponseEntity<Void> updateUser(Long userId, String action) {
 		try {
-			this.service.updateUser(userId);
+			this.service.updateUser(userId, action);
 		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
 		}
