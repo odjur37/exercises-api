@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS users(user_id serial PRIMARY KEY, username VARCHAR(255), exercises integer);
+CREATE TABLE IF NOT EXISTS users(id serial PRIMARY KEY, name VARCHAR(255), exercises integer, dates text[]);
 
 /**CREATE TABLE users(
 	username varchar(100) UNIQUE NOT NULL,

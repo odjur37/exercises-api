@@ -1,115 +1,74 @@
 package com.triplewill.model;
 
-import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.vladmihalcea.hibernate.type.array.StringArrayType;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
 @Entity
 @Table(name = "users")
+@TypeDefs({
+    @TypeDef(
+        name = "string-array",
+        typeClass = StringArrayType.class
+    )
+})
 public class User implements Comparable<User>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long userId;
+	private Long id;
 	
-	private Integer exercises;
+	private String name;
 	
-	private String username;
+	@Type( type = "string-array" )
+	private String[] dates;
+
+	public String[] getDates() {
+		return dates;
+	}
+
+	public void setDates(String[] dates) {
+		this.dates = dates;
+	}
 
 	public User id(Long id) {
-		this.userId = id;
+		this.id = id;
 		return this;
 	}
 
 	public User id(Long id, Integer exercises, String name) {
-		this.userId = id;
-		this.exercises = exercises;
-		this.username = name;
+		this.id = id;
+		this.name = name;
 		return this;
 	}
 
 	public Long getId() {
-		return userId;
+		return id;
 	}
 
-	public void setId(Long id) {
-		this.userId = id;
-	}
-
-	public User exercises(Integer exercises) {
-		this.exercises = exercises;
-		return this;
-	}
-
-	public Integer getExercises() {
-		return exercises;
-	}
-
-	public void setExercises(Integer exercises) {
-		this.exercises = exercises;
-	}
-
-	public User name(String name) {
-		this.username = name;
-		return this;
+	public void setId(Long userId) {
+		this.id = userId;
 	}
 
 	public String getName() {
-		return username;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.username = name;
-	}
-
-	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		User user = (User) o;
-		return Objects.equals(this.userId, user.userId) && Objects.equals(this.exercises, user.exercises)
-				&& Objects.equals(this.username, user.username);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(userId, exercises, username);
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("class Participant {\n");
-
-		sb.append("    id: ").append(toIndentedString(userId)).append("\n");
-		sb.append("    exercises: ").append(toIndentedString(exercises)).append("\n");
-		sb.append("    name: ").append(toIndentedString(username)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
-
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
+		this.name = name;
 	}
 
 	@Override
 	public int compareTo(User o) {
-		return this.userId.compareTo(o.getId());
+		return this.id.compareTo(o.getId());
 	}
 
 }

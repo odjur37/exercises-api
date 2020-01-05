@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpClientErrorException;
 
 import com.triplewill.exerciseapp.services.UserService;
 import com.triplewill.model.User;
@@ -27,13 +26,10 @@ public class UserController implements UserApi {
 	}
 
 	@Override
-	public ResponseEntity<Void> updateUser(Long userId, String action) {
-		try {
-			this.service.updateUser(userId, action);
-		} catch (HttpClientErrorException e) {
-			e.printStackTrace();
-		}
+	public ResponseEntity<Void> updateUserDates(Long id, String[] dates) {
+		this.service.updateUserDates(id, dates);
+		
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-
+	
 }

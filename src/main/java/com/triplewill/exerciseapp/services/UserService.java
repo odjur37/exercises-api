@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import com.triplewill.exerciseapp.repositories.UserRepositoryImpl;
 import com.triplewill.model.User;
@@ -15,37 +13,30 @@ import com.triplewill.model.User;
 public class UserService {
 
 	@Autowired
-	UserRepositoryImpl repo;
+	UserRepositoryImpl userRepo;
 	
 	public User createUser(User user) {
-		return this.repo.save(user);
+		return this.userRepo.save(user);
 	}
 	
 	public List<User> getAllUsers(){
-		return this.repo.findAll();
+		return this.userRepo.findAll();
 	}
-
-	public void updateUser(Long userId, String action) {
-		Optional<User> queryResult=this.repo.findById(userId);
-		if (queryResult.isPresent()) {
-			User user = queryResult.get();
-			switch (action) {
-			case "increase":
-				updatePts(user, 1);
-				break;
-			case "decrease":
-				updatePts(user, -1);
-				break;
-			default:
-				break;
-			}
-			this.repo.save(user);
-		} else {
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+	
+	public void updateUserDates(Long id, String[] dates) {
+		User user = queryUser(id);
+		if (user != null) {
+			user.setDates(dates);
+			this.userRepo.save(user);
 		}
 	}
 	
-	private void updatePts(User user, int point) {
-		user.setExercises(user.getExercises() + point);
+	private User queryUser(Long id){
+		Optional<User> queryResult=this.userRepo.findById(id);
+		if (queryResult.isPresent()) {
+			return queryResult.get();
+		}
+		return null;
 	}
+	
 }
