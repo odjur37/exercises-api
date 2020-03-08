@@ -1,16 +1,15 @@
 package com.triplewill.exerciseapp.controllers;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.openapitools.api.UserApi;
+import com.triplewill.exerciseapp.services.UserService;
+import com.triplewill.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.triplewill.exerciseapp.services.UserService;
-import com.triplewill.model.User;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class UserController implements UserApi {

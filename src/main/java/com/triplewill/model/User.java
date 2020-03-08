@@ -1,16 +1,11 @@
 package com.triplewill.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
